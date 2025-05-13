@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Live Captioning</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="video-container">
+            <video id="webcam" autoplay playsinline muted width="640" height="480"></video>
+        </div>
+
+        <div id="error-message-area" class="error-message" style="display:none;"></div>
+
+        <div class="controls-grid">
+            <div class="control-item">
+                <label for="instruction">Instruction (Prompt):</label>
+                <textarea id="instruction" rows="3">What do you see in this image?</textarea>
+            </div>
+            <div class="control-item">
+                <label for="response">Response:</label>
+                <textarea id="response" rows="4" readonly></textarea>
+            </div>
+        </div>
+
+        <div class="footer-controls">
+            <label for="refreshInterval">Interval between requests:</label>
+            <select id="refreshInterval">
+                <option value="1000">1000ms</option>
+                <option value="1500">1500ms</option>
+                <option value="2000" selected>2000ms</option>
+                <option value="3000">3000ms</option>
+                <option value="5000">5000ms</option>
+                <option value="7000">7000ms</option>
+            </select>
+            <button id="toggleStreamButton">Start</button>
+        </div>
+        <p>Status: <span id="status">Idle. Click Start.</span></p>
+        <canvas id="canvas" style="display:none;"></canvas> </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
