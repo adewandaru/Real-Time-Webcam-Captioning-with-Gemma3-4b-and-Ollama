@@ -1,6 +1,6 @@
-# Real-Time Webcam Captioning with LLaVA-Phi-3 and Ollama
+# Real-Time Webcam Captioning with Gemma3:4b and Ollama
 
-This project provides a web-based interface for real-time captioning of your webcam feed using the LLaVA-Phi-3 multimodal model, served locally via Ollama. It captures frames from your webcam, allows you to input custom instructions (prompts), and displays the generated descriptions. Additionally, it saves a history of all prompts and captions, along with the corresponding captured images.
+This project provides a web-based interface for real-time captioning of your webcam feed using the Gemma3:4b multimodal model, served locally via Ollama. It captures frames from your webcam, allows you to input custom instructions (prompts), and displays the generated descriptions. Additionally, it saves a history of all prompts and captions, along with the corresponding captured images.
 
 ---
 
@@ -19,7 +19,7 @@ This project provides a web-based interface for real-time captioning of your web
 ## Project Structure
 
 ```text
-PHI/
+./
 ├── .venv/                  # Virtual environment
 ├── saved_captions/
 │   └── caption_history.txt # Stores Q&A history
