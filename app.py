@@ -14,7 +14,7 @@ app = Flask(__name__)
 # Fixed Ollama API URL (previously from UI)
 # For better practice, this could be an environment variable
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
-LLAVA_MODEL = "llava-phi3" # Ensure this model is pulled in Ollama
+MODEL = "gemma3:4b" # Ensure this model is pulled in Ollama
 
 # --- Paths for saving data ---
 SAVE_DIR = os.path.dirname(os.path.abspath(__file__)) # Gets the directory of app.py
@@ -86,13 +86,13 @@ def get_caption():
 
     # --- Prepare payload for Ollama ---
     payload = {
-        "model": LLAVA_MODEL,
+        "model": MODEL,
         "prompt": custom_prompt,
         "images": [base64_image_data], # Ollama API expects just the base64 string in the list
         "stream": False
     }
 
-    logging.info(f"Sending request to Ollama at {OLLAMA_API_URL} for model {LLAVA_MODEL}...")
+    logging.info(f"Sending request to Ollama at {OLLAMA_API_URL} for model {MODEL}...")
     try:
         response = requests.post(OLLAMA_API_URL, json=payload, timeout=90) # Increased timeout
         response.raise_for_status() # Raise an exception for HTTP errors (4xx or 5xx)

@@ -7,7 +7,7 @@ This project provides a web-based interface for real-time captioning of your web
 ## Features
 
 * **Live Webcam Feed:** Displays your webcam stream directly in the browser.
-* **Real-Time Captioning:** Sends webcam frames to a local LLaVA-Phi-3 model (via Ollama) for description.
+* **Real-Time Captioning:** Sends webcam frames to a local gemma3:4b model (via Ollama) for description.
 * **Custom Prompts:** Allows users to specify custom instructions or questions for the model regarding the webcam image.
 * **Adjustable Refresh Rate:** Control how frequently frames are captured and sent for captioning.
 * **Caption History:** Automatically saves all prompts and their corresponding generated captions to a text file (`saved_captions/caption_history.txt`).
@@ -42,10 +42,10 @@ Before you begin, ensure you have the following installed:
 
 1.  **Python 3.7+**
 2.  **Ollama Desktop:** Download and install from [ollama.com](https://ollama.com).
-3.  **LLaVA-Phi-3 Model (or another LLaVA variant):**
+3.  **gemma3:4b Model (or another gemma variant):**
     * After installing Ollama, pull the model by running the following command in your terminal:
         ```bash
-        ollama pull llava-phi3
+        ollama pull gemma3:4b
         ```
     * Verify the model is available:
         ```bash
@@ -99,12 +99,12 @@ Before you begin, ensure you have the following installed:
 
 1.  **Grant Webcam Permission:** When you first click "Start," your browser will ask for permission to access your webcam. You **must** click "Allow."
     * If you don't see a prompt or if it's blocked, check your browser's site settings for `http://localhost:5000` and your operating system's camera privacy settings to ensure your browser has access.
-2.  **Enter Instruction (Prompt):** In the "Instruction (Prompt)" text area, type what you want the LLaVA model to describe or answer about the webcam image (e.g., "What object is in the center?", "Describe the scene.", "What colors are prominent?").
+2.  **Enter Instruction (Prompt):** In the "Instruction (Prompt)" text area, type what you want the gemma model to describe or answer about the webcam image (e.g., "What object is in the center?", "Describe the scene.", "What colors are prominent?").
 3.  **Adjust Interval (Optional):** Select the desired time interval between frame captures from the dropdown menu.
 4.  **Click "Start":**
     * The webcam feed will appear.
     * The application will begin capturing frames at the specified interval.
-    * Each captured frame will be sent with your instruction to the LLaVA model.
+    * Each captured frame will be sent with your instruction to the gemma model.
     * The model's response will appear in the "Response" text area.
 5.  **View Saved Data:**
     * **Captions:** Open the `saved_captions/caption_history.txt` file to see a log of all instructions, responses, timestamps, and associated image filenames.
@@ -114,7 +114,7 @@ Before you begin, ensure you have the following installed:
 ## Configuration Notes
 
 * **Ollama API URL:** The Ollama API endpoint is currently hardcoded in `app.py` as `http://localhost:11434/api/generate`. If your Ollama instance runs on a different address or port, you'll need to modify this in `app.py`.
-* **LLaVA Model:** The model used is `llava-phi3`, also hardcoded in `app.py`. If you wish to use a different LLaVA variant available in your Ollama setup, change the `LLAVA_MODEL` variable in `app.py`.
+* **gemma Model:** The model used is `gemma3:4b`, also hardcoded in `app.py`. If you wish to use a different gemma variant available in your Ollama setup, change the `MODEL` variable in `app.py`.
 * **Image Quality:** Captured frames are converted to JPEG format at the highest quality (1.0) before being sent to the model and saved. This is handled in `static/js/script.js`.
 
 ## Troubleshooting
@@ -127,7 +127,7 @@ Before you begin, ensure you have the following installed:
         * **macOS:** System Settings -> Privacy & Security -> Camera -> Ensure your browser is checked.
 * **No captions appear / "Could not connect to Ollama server":**
     * Verify that Ollama Desktop is running.
-    * Confirm that the `llava-phi3` model (or your chosen model) is downloaded and listed in `ollama list`.
+    * Confirm that the `gemma3:4b` model (or your chosen model) is downloaded and listed in `ollama list`.
     * Check the terminal where `python app.py` is running for any error messages from the Flask server or Ollama.
 * **404 Errors for CSS/JS files:** Ensure your `static/css/style.css` and `static/js/script.js` files are correctly placed as per the project structure.
 
