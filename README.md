@@ -4,10 +4,6 @@ This project provides a web-based interface for real-time captioning of your web
 
 ---
 
-![Workflow Demo](./workflow.gif)
-
----
-
 ![Workflow Screenshot](workflownew.png)
 
 ## Features
