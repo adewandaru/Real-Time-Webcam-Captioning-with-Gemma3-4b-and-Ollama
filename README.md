@@ -4,8 +4,6 @@ This project provides a web-based interface for real-time captioning of your web
 
 ---
 
-![Workflow Screenshot](workflownew.png)
-
 ## Features
 
 * **Live Webcam Feed:** Displays your webcam stream directly in the browser.
